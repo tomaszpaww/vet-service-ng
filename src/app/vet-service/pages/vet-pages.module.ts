@@ -6,13 +6,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    OwnersModule,
-    PetsModule,
-    SpeciesModule,
-    WildAnimalsModule,
-  ]
+    declarations: [
+    ],
+    imports: [
+        CommonModule,
+        OwnersModule,
+        PetsModule,
+        SpeciesModule,
+        WildAnimalsModule
+    ],
 })
 export class VetPagesModule { }
