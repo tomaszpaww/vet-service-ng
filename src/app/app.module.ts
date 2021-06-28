@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         VetServiceModule,
         MatToolbarModule,
         MatSidenavModule,
+        FlexLayoutModule
     ],
     providers: [],
     bootstrap: [AppComponent]
