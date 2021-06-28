@@ -10,6 +10,6 @@ import { WildAdnimal } from '../../dto/wild-animal';
 export class WildAnimalsResourceService extends CrudResource<WildAdnimal> {
 
     constructor(httpClient: HttpClient) {
-        super(`${environment.serverUrl}/pets`, httpClient);
+        super(`${environment.serverUrl}/wild-animals`, httpClient);
     }
 }

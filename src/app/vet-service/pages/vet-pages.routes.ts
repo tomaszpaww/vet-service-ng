@@ -7,4 +7,8 @@ export const vetPagesRoutes = [
     path: 'species',
     loadChildren: () => import('./species/species.module').then(m => m.SpeciesModule)
   },
+  {
+    path: 'wild-animals',
+    loadChildren: () => import('./wild-animals/wild-animals.module').then(m => m.WildAnimalsModule)
+  },
 ];
