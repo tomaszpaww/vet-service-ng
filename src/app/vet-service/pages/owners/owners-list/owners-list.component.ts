@@ -1,17 +1,24 @@
+import { Owner } from './../../../dto/owner';
+import { Observable } from 'rxjs';
+import { OwnersResourceService } from './../../../providers/resources/owners-resource.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-owners-list',
-  templateUrl: './owners-list.component.html',
-  styleUrls: ['./owners-list.component.scss']
+    selector: 'app-owners-list',
+    templateUrl: './owners-list.component.html',
+    styleUrls: ['./owners-list.component.scss']
 })
 export class OwnersListComponent implements OnInit {
-  rows = [{id: 2, fullName: "TOm"}, {id: 4, fullName: "dasdasdasd"}]
-  displayedColumns = ['id', 'fullName'];
+    displayedColumns = ['id', 'fullName', 'Actions'];
 
-  constructor() { }
+    ownersStream: Observable<Owner[]>;
+    constructor(private ownersResource: OwnersResourceService) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this.fetchOwners();
+    }
 
+    private fetchOwners(): void {
+        this.ownersStream = this.ownersResource.list();
+    }
 }
