@@ -14,7 +14,8 @@ export class SpeciesListComponent implements OnInit {
     displayedColumns = ['id', 'label', 'Actions'];
     public speciesStream: Observable<Species[]>;
 
-    constructor(private speciesResource: SpeciesResourceService, private snackBar: MatSnackBar) { }
+    constructor(private speciesResource: SpeciesResourceService,
+        private snackBar: MatSnackBar) { }
 
     private fetchList(): void {
         this.speciesStream = this.speciesResource.list();

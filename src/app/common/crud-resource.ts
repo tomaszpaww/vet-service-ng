@@ -26,9 +26,30 @@ export class CrudResource<T> {
     public update<K>(id: string | number, payload: K | any, params?: HttpParams | OptionalHttpParams): Observable<T> {
         return this.httpClient.put<T>(this.URL + '/' + id, payload, { params });
     }
-}
 
+    public extractBackendError(error: BackEndError): string {
+        const detail: BackendErrorDetail = error.error.details[0];
+        return `${detail.path} ${detail.message}`;
+    }
+}
 
 export interface OptionalHttpParams {
     [param: string]: string | string[];
+}
+
+export interface BackEndError {
+    error: {
+        statusCode: number,
+        name: string,
+        message: string,
+        code: string,
+        details: BackendErrorDetail[]
+    }
+}
+
+export interface BackendErrorDetail {
+    path: string;
+    code: string;
+    message: string;
+    info: object
 }

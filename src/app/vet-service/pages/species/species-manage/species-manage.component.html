@@ -1,16 +1,19 @@
-<div fxLayout="column" fxLayoutGap="20px">
-    <a routerLink="/species">
-        <button mat-raised-button color="primary">Species list</button>
-    </a>
-
+<div>
     <h2>
         {{action}} Species {{id}}
     </h2>
     <form [formGroup]="speciesForm" (submit)="saveSpecies()">
-        <mat-form-field appearance="fill">
-            <mat-label>Label</mat-label>
-            <input matInput formControlName="label">
-        </mat-form-field>
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field appearance="fill">
+                <mat-label>Label</mat-label>
+                <input matInput formControlName="label">
+            </mat-form-field>
+
+        </div>
+
+        <a routerLink="/species">
+            <button mat-raised-button color="link">Back</button>
+        </a>
 
         <button mat-raised-button color="primary">Save</button>
     </form>

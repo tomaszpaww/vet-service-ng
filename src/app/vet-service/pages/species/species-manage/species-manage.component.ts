@@ -1,3 +1,5 @@
+import { BackEndError } from './../../../../common/crud-resource';
+import { WildAdnimal } from './../../../dto/wild-animal';
 import { environment } from './../../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpeciesResourceService } from './../../../providers/resources/species-resource.service';
@@ -5,7 +7,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Species } from 'src/app/vet-service/dto/species';
 
 @Component({
     selector: 'app-species-manage',
@@ -21,7 +24,7 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
 
     constructor(private route: ActivatedRoute,
         private formBuilder: FormBuilder,
-        private snackBack: MatSnackBar,
+        private snackBar: MatSnackBar,
         private speciesResource: SpeciesResourceService) {
 
         this.action = this.route.snapshot.data.action;
@@ -32,20 +35,19 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
     }
 
     public saveSpecies() {
+        if (this.speciesForm.valid) {
+            this.getManageObservable().subscribe(
+                res => this.snackBar.open('Species has been saved successfuly!', 'OK', environment.snackbarConfig),
+                err => this.handleManageError(err.error)
+            )
+        }
+    }
+
+    private getManageObservable(): Observable<Species> {
         if (this.action == 'edit') {
-            this.subscription.add(
-                this.speciesResource.update(this.id, this.speciesForm.value).subscribe(
-                    res => this.snackBack.open('Species updated successfuly!', 'OK', environment.snackbarConfig),
-                    err => this.handleManageError(err)
-                )
-            );
+            return this.speciesResource.update(this.id, this.speciesForm.value);
         } else {
-            this.subscription.add(
-                this.speciesResource.create(this.speciesForm.value).subscribe(
-                    res => this.snackBack.open('Species created successfuly!', 'OK', environment.snackbarConfig),
-                    err => this.handleManageError(err)
-                )
-            );
+            return this.speciesResource.create(this.speciesForm.value);
         }
     }
 
@@ -57,8 +59,8 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
         );
     }
 
-    private handleManageError(err: HttpErrorResponse) {
-        console.log(err);
+    private handleManageError(err: BackEndError) {
+        this.snackBar.open(this.speciesResource.extractBackendError(err), 'Close', environment.snackbarConfig);
     }
 
     ngOnInit(): void {
