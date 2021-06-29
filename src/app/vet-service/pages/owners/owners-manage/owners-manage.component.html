@@ -1,0 +1,42 @@
+<div>
+    <h2>
+        {{action}} Owner {{id}}
+    </h2>
+    <form [formGroup]="ownerForm" (submit)="saveOwner()">
+        <div fxLayout="row" fxLayoutGap="20px">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Full Name</mat-label>
+                <input matInput type="text" formControlName="fullName">
+            </mat-form-field>
+
+            <ng-container formGroupName="address">
+                <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <input matInput type="text" formControlName="city">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Street</mat-label>
+                    <input matInput type="text" formControlName="street">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Country</mat-label>
+                    <input matInput type="text" formControlName="country">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput type="text" formControlName="zipCode">
+                </mat-form-field>
+            </ng-container>
+        </div>
+
+        <a routerLink="/owners">
+            <button mat-raised-button color="link">Back</button>
+        </a>
+        <button type="submit" mat-raised-button color="primary">Save</button>
+
+    </form>
+</div>
