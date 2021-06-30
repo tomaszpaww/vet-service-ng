@@ -1,0 +1,47 @@
+<div>
+    <h2>
+        {{action}} Pet {{id}}
+    </h2>
+    <form [formGroup]="petForm" (submit)="savePet()">
+        <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field appearance="fill">
+                <mat-label>Owner</mat-label>
+                <mat-select formControlName="ownerId">
+                    <mat-option *ngFor="let owner of ownersStream | async" [value]="owner.id">
+                        {{owner.fullName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Vaccinated</mat-label>
+                <mat-select formControlName="vaccinated">
+                    <mat-option [value]="true">Yes</mat-option>
+                    <mat-option [value]="false">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Species</mat-label>
+                <mat-select formControlName="speciesId">
+                    <mat-option *ngFor="let species of speciesStream | async" [value]="species.id">
+                        {{species.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Birthday</mat-label>
+                <input matInput formControlName="birthday" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <a routerLink="/pets">
+            <button mat-raised-button color="link">Back</button>
+        </a>
+        <button type="submit" mat-raised-button color="primary">Save</button>
+
+    </form>
+</div>
