@@ -17,6 +17,9 @@
         <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let species">
+                <a routerLink="/species/{{species.id}}">
+                    <button mat-raised-button color="basic">Show</button>
+                </a>
                 <a routerLink="/species/{{species.id}}/edit">
                     <button mat-raised-button color="basic">Edit</button>
                 </a>

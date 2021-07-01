@@ -1,0 +1,18 @@
+<div fxLayout="row">
+    <mat-card fxFlex="20">
+        <mat-card-title>{{owner?.fullName}}</mat-card-title>
+        <mat-card-content>
+            <p>Street: {{owner.address.street}}</p>
+            <p>City: {{owner.address.city}}</p>
+            <p>Zip Code: {{owner.address.zipCode}}</p>
+            <p>Country: {{owner.address.country}}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="80">
+        <mat-card-title>Pets</mat-card-title>
+        <mat-card-content>
+            <app-pets-list-table *ngIf="owner" [pets]="owner.pets" [displayedColumns]="petsDisplayedColumns"></app-pets-list-table>
+        </mat-card-content>
+    </mat-card>
+</div>

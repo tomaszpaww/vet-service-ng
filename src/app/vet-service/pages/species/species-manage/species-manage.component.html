@@ -3,7 +3,7 @@
         {{action}} Species {{id}}
     </h2>
     <form [formGroup]="speciesForm" (submit)="saveSpecies()">
-        <div fxLayout="row" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayoutGap="20px">
             <mat-form-field appearance="fill">
                 <mat-label>Label</mat-label>
                 <input matInput formControlName="label">

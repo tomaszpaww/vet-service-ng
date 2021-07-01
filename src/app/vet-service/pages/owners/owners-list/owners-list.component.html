@@ -37,6 +37,9 @@
         <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let owner">
+                <a routerLink="/owners/{{owner.id}}">
+                    <button mat-raised-button color="link">Show</button>
+                </a>
                 <a routerLink="/owners/{{owner.id}}/edit">
                     <button mat-raised-button color="link">Edit</button>
                 </a>

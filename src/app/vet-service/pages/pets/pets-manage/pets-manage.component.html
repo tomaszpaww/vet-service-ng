@@ -3,7 +3,7 @@
         {{action}} Pet {{id}}
     </h2>
     <form [formGroup]="petForm" (submit)="savePet()">
-        <div fxLayout="row" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayoutGap="20px">
             <mat-form-field appearance="fill">
                 <mat-label>Owner</mat-label>
                 <mat-select formControlName="ownerId">

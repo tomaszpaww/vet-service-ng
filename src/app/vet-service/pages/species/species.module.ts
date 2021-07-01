@@ -1,3 +1,5 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
@@ -12,11 +14,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SpeciesPageComponent } from './species-page/species-page.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { VetServiceModule } from '../../vet-service.module';
 
 @NgModule({
   declarations: [
     SpeciesListComponent,
-    SpeciesManageComponent
+    SpeciesManageComponent,
+    SpeciesPageComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatGridListModule,
+    MatCardModule,
+    MatBadgeModule,
+    VetServiceModule
   ]
 })
 export class SpeciesModule { }

@@ -1,0 +1,34 @@
+<h1>Species: {{species?.label}}</h1>
+<div fxLayout="row">
+    <mat-card *ngIf="species?.pets" fxFlex="50">
+        <mat-card-title>Pets</mat-card-title>
+        <mat-card-content>
+            <app-pets-list-table [pets]="species.pets" [displayedColumns]="petsDisplayedColumns"></app-pets-list-table>
+        </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="species?.wildAnimals" fxFlex="50">
+        <mat-card-title>Wild Animals</mat-card-title>
+        <mat-card-content>
+            <table mat-table [dataSource]="species.wildAnimals" class="mat-elevation-z8 w-100">
+                <ng-container matColumnDef="trackingId">
+                    <th mat-header-cell *matHeaderCellDef> TrackingId </th>
+                    <td mat-cell *matCellDef="let wildAnimal"> {{wildAnimal.trackingId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="birthday">
+                    <th mat-header-cell *matHeaderCellDef> Birthday </th>
+                    <td mat-cell *matCellDef="let wildAnimal"> {{wildAnimal.birthday | date}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="vaccinated">
+                    <th mat-header-cell *matHeaderCellDef> Vaccinated </th>
+                    <td mat-cell *matCellDef="let wildAnimal"> {{wildAnimal.vaccinated}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="wildAnimalsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: wildAnimalsDisplayedColumns;"></tr>
+            </table>
+
+        </mat-card-content>
+    </mat-card>
+</div>

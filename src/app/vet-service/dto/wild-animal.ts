@@ -3,7 +3,7 @@ import { Species } from './species';
 export interface WildAdnimal {
     id: number;
     trackingId: number;
-    birtday: Date;
-    vacciated: boolean;
+    birthday: Date;
+    vaccinated: boolean;
     species: Species;
 }

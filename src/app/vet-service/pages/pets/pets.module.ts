@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import { VetServiceModule } from '../../vet-service.module';
 
 
 
@@ -35,7 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSnackBarModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    VetServiceModule
   ]
 })
 export class PetsModule { }

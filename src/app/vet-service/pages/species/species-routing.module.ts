@@ -1,3 +1,4 @@
+import { SpeciesPageComponent } from './species-page/species-page.component';
 import { SpeciesManageComponent } from './species-manage/species-manage.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,10 @@ const routes: Routes = [
         path: 'new',
         component: SpeciesManageComponent,
         data: { action: 'new' }
+      },
+      {
+        path: ':id',
+        component: SpeciesPageComponent
       },
       {
         path: ':id/edit',
