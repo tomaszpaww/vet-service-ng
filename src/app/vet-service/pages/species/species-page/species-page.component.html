@@ -1,6 +1,6 @@
 <h1>Species: {{species?.label}}</h1>
 <div fxLayout="row">
-    <mat-card *ngIf="species?.pets" fxFlex="50">
+    <mat-card fxFlex="50">
         <mat-card-title>Pets</mat-card-title>
         <mat-card-content>
             <app-pets-list-table [pets]="species.pets" [displayedColumns]="petsDisplayedColumns"></app-pets-list-table>

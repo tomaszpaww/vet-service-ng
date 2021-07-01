@@ -33,7 +33,7 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
         });
     }
 
-    public saveSpecies() {
+    public saveSpecies(): void {
         if (this.speciesForm.valid) {
             this.subscription.add(
                 this.getManageObservable().subscribe(
@@ -52,7 +52,7 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
         }
     }
 
-    private fetchSpecies() {
+    private fetchSpecies(): void {
         this.subscription.add(
             this.speciesResource.get(this.id).subscribe(
                 species => this.speciesForm.patchValue(species)
@@ -60,7 +60,7 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
         );
     }
 
-    private handleManageError(err: BackEndError) {
+    private handleManageError(err: BackEndError): void {
         this.snackBar.open(this.speciesResource.extractBackendError(err), 'Close', environment.snackbarConfig);
     }
 

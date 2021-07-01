@@ -1,3 +1,5 @@
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -39,7 +41,9 @@ import { VetServiceModule } from '../../vet-service.module';
     MatGridListModule,
     MatCardModule,
     MatBadgeModule,
-    VetServiceModule
+    VetServiceModule,
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class SpeciesModule { }

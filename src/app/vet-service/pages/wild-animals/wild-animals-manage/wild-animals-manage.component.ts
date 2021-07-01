@@ -80,7 +80,7 @@ export class WildAnimalsManageComponent implements OnInit, OnDestroy {
         )
     }
 
-    private handleManageError(err: BackEndError) {
+    private handleManageError(err: BackEndError): void {
         this.snackBar.open(this.wildAnimalsResource.extractBackendError(err), 'Close', environment.snackbarConfig);
     }
 }

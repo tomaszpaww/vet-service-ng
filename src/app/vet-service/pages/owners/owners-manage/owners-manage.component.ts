@@ -50,7 +50,7 @@ export class OwnersManageComponent implements OnInit, OnDestroy {
         )
     }
 
-    public saveOwner() {
+    public saveOwner(): void {
         if (this.ownerForm.valid) {
             this.subscription.add(
                 this.getManageOwnerObservable().pipe(

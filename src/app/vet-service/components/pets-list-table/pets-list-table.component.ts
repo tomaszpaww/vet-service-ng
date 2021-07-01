@@ -8,14 +8,10 @@ import { Pet } from '../../dto/pet';
     styleUrls: ['./pets-list-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PetsListTableComponent implements OnInit {
+export class PetsListTableComponent {
     @Input() pets: Observable<Pet[]> | Pet[];
     @Input() displayedColumns: string[];
     @ContentChild(TemplateRef) actionMenuTemplate: TemplateRef<any>;
 
     constructor() { }
-
-    ngOnInit(): void {
-    }
-
 }

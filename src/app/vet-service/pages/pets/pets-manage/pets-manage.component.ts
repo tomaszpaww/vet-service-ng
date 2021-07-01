@@ -77,7 +77,7 @@ export class PetsManageComponent implements OnInit, OnDestroy {
         }
     }
 
-    private handleManageError(err: BackEndError) {
+    private handleManageError(err: BackEndError): void {
         this.snackBar.open(this.petResource.extractBackendError(err), 'Close', environment.snackbarConfig);
     }
 

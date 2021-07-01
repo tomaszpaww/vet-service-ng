@@ -5,10 +5,19 @@
 
     <app-pets-list-table [pets]="petsStream" [displayedColumns]="displayedColumns">
         <ng-template let-pet>
-            <a routerLink="/pets/{{pet.id}}/edit">
-                <button mat-raised-button color="link">Edit</button>
-            </a>
-            <button mat-raised-button (click)="deletePet(pet)" color="warn">Remove pet</button>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/pets/{{pet.id}}/edit">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+                <button mat-menu-item (click)="deletePet(pet)">
+                        <mat-icon>remove</mat-icon>
+                        <span>Remove</span>
+                    </button>
+            </mat-menu>
         </ng-template>
     </app-pets-list-table>
 </div>

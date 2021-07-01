@@ -1,3 +1,5 @@
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
@@ -35,7 +37,9 @@ import { VetServiceModule } from '../../vet-service.module';
     FlexLayoutModule,
     RouterModule,
     ReactiveFormsModule,
-    VetServiceModule
+    VetServiceModule,
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class OwnersModule { }

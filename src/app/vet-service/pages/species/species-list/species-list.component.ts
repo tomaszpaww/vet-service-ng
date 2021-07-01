@@ -23,7 +23,7 @@ export class SpeciesListComponent implements OnInit, OnDestroy {
         this.speciesStream = this.speciesResource.list();
     }
 
-    public removeSpecies(species: Species) {
+    public removeSpecies(species: Species): void {
         if (confirm("Are you sure?")) {
             this.subscription.add(
                 this.speciesResource.delete(species.id).subscribe(

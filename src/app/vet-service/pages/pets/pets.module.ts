@@ -1,3 +1,5 @@
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -37,7 +39,9 @@ import { VetServiceModule } from '../../vet-service.module';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    VetServiceModule
+    VetServiceModule,
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class PetsModule { }
