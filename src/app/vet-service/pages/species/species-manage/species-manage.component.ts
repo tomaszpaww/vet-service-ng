@@ -36,9 +36,11 @@ export class SpeciesManageComponent implements OnInit, OnDestroy {
 
     public saveSpecies() {
         if (this.speciesForm.valid) {
-            this.getManageObservable().subscribe(
-                res => this.snackBar.open('Species has been saved successfuly!', 'OK', environment.snackbarConfig),
-                err => this.handleManageError(err.error)
+            this.subscription.add(
+                this.getManageObservable().subscribe(
+                    res => this.snackBar.open('Species has been saved successfuly!', 'OK', environment.snackbarConfig),
+                    err => this.handleManageError(err.error)
+                )
             )
         }
     }
