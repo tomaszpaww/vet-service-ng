@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class OwnersListComponent implements OnInit, OnDestroy {
     displayedColumns = ['id', 'fullName', 'street', 'city', 'country', 'zipCode', 'Actions'];
     ownersStream: Observable<Owner[]>;
-
+    private filter = { include: ['address'] };
     private subscription = new Subscription();
 
     constructor(private ownersResource: OwnersResourceService,
@@ -23,7 +23,7 @@ export class OwnersListComponent implements OnInit, OnDestroy {
 
 
     private fetchOwners(): void {
-        this.ownersStream = this.ownersResource.list({ 'filter[include][]': 'address' });
+        this.ownersStream = this.ownersResource.list({ filter: JSON.stringify(this.filter) });
     }
 
     public deleteOwner(owner: Owner): void {
