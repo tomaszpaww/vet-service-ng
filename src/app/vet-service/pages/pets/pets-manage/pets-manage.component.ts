@@ -4,7 +4,7 @@ import { SpeciesResourceService } from './../../../providers/resources/species-r
 import { Owner } from './../../../dto/owner';
 import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { PetsResourceService } from 'src/app/vet-service/providers/resources/pets-resource.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,8 @@ import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-pets-manage',
     templateUrl: './pets-manage.component.html',
-    styleUrls: ['./pets-manage.component.scss']
+    styleUrls: ['./pets-manage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PetsManageComponent implements OnInit, OnDestroy {
     public id: number;

@@ -1,19 +1,18 @@
 import { BackEndError } from './../../../../common/crud-resource';
-import { WildAdnimal } from './../../../dto/wild-animal';
 import { environment } from './../../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpeciesResourceService } from './../../../providers/resources/species-resource.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription, Observable } from 'rxjs';
 import { Species } from 'src/app/vet-service/dto/species';
 
 @Component({
     selector: 'app-species-manage',
     templateUrl: './species-manage.component.html',
-    styleUrls: ['./species-manage.component.scss']
+    styleUrls: ['./species-manage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeciesManageComponent implements OnInit, OnDestroy {
     public id: number;

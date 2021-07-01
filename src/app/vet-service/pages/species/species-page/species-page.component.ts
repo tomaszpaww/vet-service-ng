@@ -1,13 +1,14 @@
 import { Subscription } from 'rxjs';
 import { SpeciesResourceService } from './../../../providers/resources/species-resource.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Species } from 'src/app/vet-service/dto/species';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-species-page',
     templateUrl: './species-page.component.html',
-    styleUrls: ['./species-page.component.scss']
+    styleUrls: ['./species-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpeciesPageComponent implements OnInit, OnDestroy {
     id: number;

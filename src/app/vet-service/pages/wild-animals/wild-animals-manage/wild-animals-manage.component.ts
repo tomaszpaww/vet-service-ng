@@ -6,14 +6,15 @@ import { Observable, Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SpeciesResourceService } from './../../../providers/resources/species-resource.service';
 import { WildAnimalsResourceService } from './../../../providers/resources/wild-animals-resource.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Species } from 'src/app/vet-service/dto/species';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-wild-animals-manage',
     templateUrl: './wild-animals-manage.component.html',
-    styleUrls: ['./wild-animals-manage.component.scss']
+    styleUrls: ['./wild-animals-manage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WildAnimalsManageComponent implements OnInit, OnDestroy {
     public id: number;

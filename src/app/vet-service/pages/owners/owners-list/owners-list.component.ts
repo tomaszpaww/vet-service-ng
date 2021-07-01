@@ -1,16 +1,16 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpParams } from '@angular/common/http';
 import { Owner } from './../../../dto/owner';
 import { Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { OwnersResourceService } from './../../../providers/resources/owners-resource.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-owners-list',
     templateUrl: './owners-list.component.html',
-    styleUrls: ['./owners-list.component.scss']
+    styleUrls: ['./owners-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OwnersListComponent implements OnInit, OnDestroy {
     displayedColumns = ['id', 'fullName', 'street', 'city', 'country', 'zipCode', 'Actions'];
@@ -19,6 +19,7 @@ export class OwnersListComponent implements OnInit, OnDestroy {
     private subscription = new Subscription();
 
     constructor(private ownersResource: OwnersResourceService,
+        private cdr: ChangeDetectorRef,
         private snackBar: MatSnackBar) { }
 
 
@@ -37,6 +38,7 @@ export class OwnersListComponent implements OnInit, OnDestroy {
                         (res) => {
                             this.snackBar.open(`${owner.fullName} has been removed!`, 'Close', environment.snackbarConfig);
                             this.fetchOwners();
+                            this.cdr.markForCheck();
                         }
                     )
             )

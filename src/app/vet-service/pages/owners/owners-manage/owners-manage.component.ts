@@ -2,7 +2,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription, Observable } from 'rxjs';
 import { OwnersResourceService } from './../../../providers/resources/owners-resource.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Owner } from 'src/app/vet-service/dto/owner';
 import { Address } from 'src/app/vet-service/dto/address';
@@ -13,13 +13,15 @@ import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-owners-manage',
     templateUrl: './owners-manage.component.html',
-    styleUrls: ['./owners-manage.component.scss']
+    styleUrls: ['./owners-manage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OwnersManageComponent implements OnInit, OnDestroy {
     public id: number;
     public action: 'new' | 'edit';
     public ownerForm: FormGroup;
 
+    private filter = { include: ['address'] };
     private subscription = new Subscription();
 
     constructor(private ownersResource: OwnersResourceService,
@@ -42,7 +44,7 @@ export class OwnersManageComponent implements OnInit, OnDestroy {
 
     private fetchOwner(): void {
         this.subscription.add(
-            this.ownersResource.get(this.id, { 'filter[include][]': 'address' }).subscribe(
+            this.ownersResource.get(this.id, { filter: JSON.stringify(this.filter) }).subscribe(
                 owner => this.ownerForm.patchValue(owner)
             )
         )

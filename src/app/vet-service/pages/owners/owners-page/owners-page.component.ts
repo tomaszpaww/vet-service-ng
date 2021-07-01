@@ -1,13 +1,14 @@
 import { Subscription } from 'rxjs';
 import { OwnersResourceService } from './../../../providers/resources/owners-resource.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Owner } from 'src/app/vet-service/dto/owner';
 
 @Component({
     selector: 'app-owners-page',
     templateUrl: './owners-page.component.html',
-    styleUrls: ['./owners-page.component.scss']
+    styleUrls: ['./owners-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OwnersPageComponent implements OnInit, OnDestroy {
     id: number
